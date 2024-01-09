@@ -17,6 +17,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseListUserVO = {
+    code?: StatusCode;
+    data?: UserVO[];
+    message?: string;
+  };
+
   type BaseResponselong = {
     code?: StatusCode;
     data?: string;
@@ -29,6 +35,24 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponsePageUserVO = {
+    code?: StatusCode;
+    data?: PageUserVO;
+    message?: string;
+  };
+
+  type BaseResponseUser = {
+    code?: StatusCode;
+    data?: User;
+    message?: string;
+  };
+
+  type BaseResponseUserVO = {
+    code?: StatusCode;
+    data?: UserVO;
+    message?: string;
+  };
+
   type DeleteRequest = {
     id?: string;
   };
@@ -36,6 +60,11 @@ declare namespace API {
   type getPostByIdUsingGETParams = {
     /** id */
     id?: string;
+  };
+
+  type getUserByIdUsingGETParams = {
+    /** id */
+    id?: number;
   };
 
   type InterfaceInfo = {
@@ -104,6 +133,36 @@ declare namespace API {
     status?: number;
     url?: string;
     userid?: string;
+  };
+
+  type listUserByPageUsingGETParams = {
+    createTime?: string;
+    current?: string;
+    gender?: number;
+    id?: string;
+    pageSize?: string;
+    sortField?: string;
+    sortOrder?: string;
+    updateTime?: string;
+    userAccount?: string;
+    userAvatar?: string;
+    userName?: string;
+    userRole?: string;
+  };
+
+  type listUserUsingGETParams = {
+    createTime?: string;
+    current?: string;
+    gender?: number;
+    id?: string;
+    pageSize?: string;
+    sortField?: string;
+    sortOrder?: string;
+    updateTime?: string;
+    userAccount?: string;
+    userAvatar?: string;
+    userName?: string;
+    userRole?: string;
   };
 
   type ModelAndView = {
@@ -202,7 +261,74 @@ declare namespace API {
     total?: string;
   };
 
+  type PageUserVO = {
+    countId?: string;
+    current?: string;
+    maxLimit?: string;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: string;
+    records?: UserVO[];
+    searchCount?: boolean;
+    size?: string;
+    total?: string;
+  };
+
   type StatusCode = true;
+
+  type User = {
+    createTime?: string;
+    gender?: number;
+    id?: string;
+    isDelete?: number;
+    updateTime?: string;
+    userAccount?: string;
+    userAvatar?: string;
+    userName?: string;
+    userPassword?: string;
+    userRole?: string;
+  };
+
+  type UserAddRequest = {
+    gender?: number;
+    userAccount?: string;
+    userAvatar?: string;
+    userName?: string;
+    userPassword?: string;
+    userRole?: string;
+  };
+
+  type UserLoginRequest = {
+    userAccount?: string;
+    userPassword?: string;
+  };
+
+  type UserRegisterRequest = {
+    checkPassword?: string;
+    userAccount?: string;
+    userPassword?: string;
+  };
+
+  type UserUpdateRequest = {
+    gender?: number;
+    id?: string;
+    userAccount?: string;
+    userAvatar?: string;
+    userName?: string;
+    userPassword?: string;
+    userRole?: string;
+  };
+
+  type UserVO = {
+    createTime?: string;
+    gender?: number;
+    id?: string;
+    updateTime?: string;
+    userAccount?: string;
+    userAvatar?: string;
+    userName?: string;
+    userRole?: string;
+  };
 
   type View = {
     contentType?: string;
