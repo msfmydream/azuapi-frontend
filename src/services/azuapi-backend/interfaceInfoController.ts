@@ -32,10 +32,10 @@ export async function deleteInterfaceInfoUsingPost(
   });
 }
 
-/** getPostById GET /api/interfaceinfo/get */
-export async function getPostByIdUsingGet(
+/** getInterfaceInfoById GET /api/interfaceinfo/get */
+export async function getInterfaceInfoByIdUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.getPostByIdUsingGETParams,
+  params: API.getInterfaceInfoByIdUsingGETParams,
   options?: { [key: string]: any },
 ) {
   return request<API.BaseResponseInterfaceInfo>('/api/interfaceinfo/get', {
@@ -47,10 +47,10 @@ export async function getPostByIdUsingGet(
   });
 }
 
-/** listPost GET /api/interfaceinfo/list */
-export async function listPostUsingGet(
+/** listInterfaceInfo GET /api/interfaceinfo/list */
+export async function listInterfaceInfoUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.listPostUsingGETParams,
+  params: API.listInterfaceInfoUsingGETParams,
   options?: { [key: string]: any },
 ) {
   return request<API.BaseResponseListInterfaceInfo>('/api/interfaceinfo/list', {
@@ -62,10 +62,10 @@ export async function listPostUsingGet(
   });
 }
 
-/** listPostByPage GET /api/interfaceinfo/list/page */
-export async function listPostByPageUsingGet(
+/** listInterfaceInfoByPage GET /api/interfaceinfo/list/page */
+export async function listInterfaceInfoByPageUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.listPostByPageUsingGETParams,
+  params: API.listInterfaceInfoByPageUsingGETParams,
   options?: { [key: string]: any },
 ) {
   return request<API.BaseResponsePageInterfaceInfo>('/api/interfaceinfo/list/page', {
@@ -77,8 +77,8 @@ export async function listPostByPageUsingGet(
   });
 }
 
-/** updatePost POST /api/interfaceinfo/update */
-export async function updatePostUsingPost(
+/** updateInterfaceInfo POST /api/interfaceinfo/update */
+export async function updateInterfaceInfoUsingPost(
   body: API.InterfaceInfoUpdateRequest,
   options?: { [key: string]: any },
 ) {

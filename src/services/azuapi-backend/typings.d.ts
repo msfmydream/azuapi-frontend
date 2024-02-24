@@ -57,7 +57,7 @@ declare namespace API {
     id?: string;
   };
 
-  type getPostByIdUsingGETParams = {
+  type getInterfaceInfoByIdUsingGETParams = {
     /** id */
     id?: string;
   };
@@ -74,8 +74,8 @@ declare namespace API {
     isDeleted?: number;
     method?: string;
     name?: string;
-    reponseheader?: string;
-    requestheader?: string;
+    responseHeader?: string;
+    requestHeader?: string;
     status?: number;
     updateTime?: string;
     url?: string;
@@ -86,8 +86,8 @@ declare namespace API {
     description?: string;
     method?: string;
     name?: string;
-    reponseheader?: string;
-    requestheader?: string;
+    responseHeader?: string;
+    requestHeader?: string;
     url?: string;
   };
 
@@ -96,22 +96,22 @@ declare namespace API {
     id?: string;
     method?: string;
     name?: string;
-    reponseheader?: string;
-    requestheader?: string;
+    responseHeader?: string;
+    requestHeader?: string;
     status?: number;
     url?: string;
     userid?: string;
   };
 
-  type listPostByPageUsingGETParams = {
+  type listInterfaceInfoByPageUsingGETParams = {
     current?: string;
     description?: string;
     id?: string;
     method?: string;
     name?: string;
     pageSize?: string;
-    reponseheader?: string;
-    requestheader?: string;
+    responseHeader?: string;
+    requestHeader?: string;
     sortField?: string;
     sortOrder?: string;
     status?: number;
@@ -119,15 +119,15 @@ declare namespace API {
     userid?: string;
   };
 
-  type listPostUsingGETParams = {
+  type listInterfaceInfoUsingGETParams = {
     current?: string;
     description?: string;
     id?: string;
     method?: string;
     name?: string;
     pageSize?: string;
-    reponseheader?: string;
-    requestheader?: string;
+    responseHeader?: string;
+    requestHeader?: string;
     sortField?: string;
     sortOrder?: string;
     status?: number;

@@ -118,22 +118,32 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: API.UserLoginRequest) => {
     try {
       // 登录
-      const res = await userLoginUsingPost({ ...values });
+      const res = await userLoginUsingPost({
+        ...values,
+      });
+      // 如果登录成功（响应有数据）
       if (res.data) {
-        message.success(res.message);
+        // 获取当前URL的查询参数
         const urlParams = new URL(window.location.href).searchParams;
-        history.push(urlParams.get('redirect') || '/');
+        // 设置一个延迟100毫秒的定时器
+        // 定时器触发后，导航到重定向URL，如果没有重定向URL，则导航到根路径
+        setTimeout(() => {
+          history.push(urlParams.get('redirect') || '/');
+        }, 100);
+        // 更新全局状态，设置登录用户的信息
         setInitialState({
           loginUser: res.data
         });
+
         return;
       }
+      // 如果抛出异常
     } catch (error) {
-      const defaultLoginFailureMessage = intl.formatMessage({
-        id: 'pages.login.failure',
-        defaultMessage: '登录失败，请重试！',
-      });
+      // 定义默认的登录失败消息
+      const defaultLoginFailureMessage = '登录失败，请重试！';
+      // 在控制台打印出错误
       console.log(error);
+      // 使用 message 组件显示错误信息
       message.error(defaultLoginFailureMessage);
     }
   };
