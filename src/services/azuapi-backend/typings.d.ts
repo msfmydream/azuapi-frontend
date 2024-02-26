@@ -67,6 +67,10 @@ declare namespace API {
     id?: number;
   };
 
+  type IdRequest = {
+    id?: string;
+  };
+
   type InterfaceInfo = {
     createTime?: string;
     description?: string;
@@ -74,8 +78,8 @@ declare namespace API {
     isDeleted?: number;
     method?: string;
     name?: string;
-    responseHeader?: string;
     requestHeader?: string;
+    responseHeader?: string;
     status?: number;
     updateTime?: string;
     url?: string;
@@ -86,8 +90,8 @@ declare namespace API {
     description?: string;
     method?: string;
     name?: string;
-    responseHeader?: string;
     requestHeader?: string;
+    responseHeader?: string;
     url?: string;
   };
 
@@ -96,8 +100,8 @@ declare namespace API {
     id?: string;
     method?: string;
     name?: string;
-    responseHeader?: string;
     requestHeader?: string;
+    responseHeader?: string;
     status?: number;
     url?: string;
     userid?: string;
@@ -110,8 +114,8 @@ declare namespace API {
     method?: string;
     name?: string;
     pageSize?: string;
-    responseHeader?: string;
     requestHeader?: string;
+    responseHeader?: string;
     sortField?: string;
     sortOrder?: string;
     status?: number;
@@ -126,8 +130,8 @@ declare namespace API {
     method?: string;
     name?: string;
     pageSize?: string;
-    responseHeader?: string;
     requestHeader?: string;
+    responseHeader?: string;
     sortField?: string;
     sortOrder?: string;
     status?: number;

@@ -11,7 +11,7 @@ import { Button, Drawer, Input, message } from 'antd';
 import React, { useRef, useState } from 'react';
 import {
   addInterfaceInfoUsingPost, deleteInterfaceInfoUsingPost,
-  listInterfaceInfoUsingGet,
+  listInterfaceInfoUsingGet, offLineInterfaceUsingPost, onLineInterfaceUsingPost,
   updateInterfaceInfoUsingPost
 } from "@/services/azuapi-backend/interfaceInfoController";
 import CreateModal from "@/components/CreateModel";
@@ -85,6 +85,70 @@ const TableList: React.FC = () => {
     } catch (error: any) {
       hide();
       message.error('操作失败，' + error.message);
+      return false;
+    }
+  };
+
+  /**
+   * 发布接口
+   *
+   * @param record
+   */
+  const handleOnline = async (record: API.IdRequest) => {
+    // 显示正在发布的加载提示
+    const hide = message.loading('发布中');
+    // 如果接口数据为空，直接返回true
+    if (!record) return true;
+    try {
+      // 调用发布接口的POST请求方法
+      await onLineInterfaceUsingPost({
+        // 传递接口的id参数
+        id: record.id
+      });
+      hide();
+      // 显示操作成功的提示信息
+      message.success('操作成功');
+      // 重新加载数据
+      actionRef.current?.reload();
+      // 返回true表示发布成功
+      return true;
+    } catch (error: any) {
+      hide();
+      // 显示操作失败的错误提示信息
+      message.error('操作失败，' + error.message);
+      // 返回false表示发布失败
+      return false;
+    }
+  };
+
+  /**
+   * 下线接口
+   *
+   * @param record
+   */
+  const handleOffline = async (record: API.IdRequest) => {
+    // 显示正在下线的加载提示
+    const hide = message.loading('发布中');
+    // 如果接口数据为空，直接返回true
+    if (!record) return true;
+    try {
+      // 调用下线接口的POST请求方法
+      await offLineInterfaceUsingPost({
+        // 传递接口的id参数
+        id: record.id
+      });
+      hide();
+      // 显示操作成功的提示信息
+      message.success('操作成功');
+      // 重新加载数据
+      actionRef.current?.reload();
+      // 返回true表示下线成功
+      return true;
+    } catch (error: any) {
+      hide();
+      // 显示操作失败的错误提示信息
+      message.error('操作失败，' + error.message);
+      // 返回false表示下线失败
       return false;
     }
   };
@@ -289,14 +353,39 @@ const TableList: React.FC = () => {
           修改
           {/*<FormattedMessage id="pages.searchTable.config" defaultMessage="Configuration" />*/}
         </a>,
+        record.status == 0 ?
         <a
+          key="online"
+          onClick={() => {
+            handleOnline(record)
+
+          }}
+        >
+          发布
+          {/*<FormattedMessage id="pages.searchTable.config" defaultMessage="Configuration" />*/}
+        </a> : null,
+        record.status == 1　?
+        <Button
+          key="offline"
+          danger
+          onClick={() => {
+            // setCurrentRow(record);
+            handleOffline(record)
+          }}
+        >
+          下线
+          {/*<FormattedMessage id="pages.searchTable.config" defaultMessage="Configuration" />*/}
+        </Button> : null,
+        <Button
+          text="text"
+          danger
           key="config"
           onClick={() => {
             handleRemove(record);
           }}
         >
           删除
-        </a>
+        </Button>
 
 
         // <a key="subscribeAlert" href="https://procomponents.ant.design/">
