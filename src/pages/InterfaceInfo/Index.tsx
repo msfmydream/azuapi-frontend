@@ -59,10 +59,13 @@ const Index: React.FC = () => {
       // 其中，id 是从 params 中获取的，而 values 是函数的参数
       const res = await invokeInterfaceInfoUsingPost({
         id: params.id,
+        url: data?.url,
+        method: data?.method,
         ...values,
       });
       message.success('请求成功');
       console.log(res)
+      console.log(values)
       setInvokeRes(res.data)
     } catch (error: any) {
       message.error('操作失败，' + error.message);

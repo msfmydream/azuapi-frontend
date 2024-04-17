@@ -7,7 +7,7 @@ import {
   ProTable,
 } from '@ant-design/pro-components';
 import { FormattedMessage, useIntl } from '@umijs/max';
-import { Button, Drawer, Input, message } from 'antd';
+import { Button, Drawer, Input, message, Select } from 'antd';
 import React, { useRef, useState } from 'react';
 import {
   addInterfaceInfoUsingPost, deleteInterfaceInfoUsingPost,
@@ -45,6 +45,7 @@ const TableList: React.FC = () => {
     const hide = message.loading('正在添加');
     try {
       // 把addRule改成addInterfaceInfoUsingPOST
+      fields.method
       await addInterfaceInfoUsingPost({
         ...fields,
       });
@@ -397,6 +398,10 @@ const TableList: React.FC = () => {
       ],
     },
   ];
+
+  const addInterfaceColums: ProColumns<API.InterfaceInfo>[] = [
+
+  ]
 
   return (
     <PageContainer>
