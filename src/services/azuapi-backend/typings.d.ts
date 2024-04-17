@@ -29,6 +29,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseobject = {
+    code?: StatusCode;
+    data?: Record<string, any>;
+    message?: string;
+  };
+
   type BaseResponsePageInterfaceInfo = {
     code?: StatusCode;
     data?: PageInterfaceInfo;
@@ -93,6 +99,11 @@ declare namespace API {
     requestHeader?: string;
     responseHeader?: string;
     url?: string;
+  };
+
+  type InterfaceInfoInvokeRequest = {
+    id?: string;
+    userRequestParams?: string;
   };
 
   type InterfaceInfoUpdateRequest = {
@@ -281,10 +292,12 @@ declare namespace API {
   type StatusCode = true;
 
   type User = {
+    accessKey?: string;
     createTime?: string;
     gender?: number;
     id?: string;
     isDelete?: number;
+    secretKey?: string;
     updateTime?: string;
     userAccount?: string;
     userAvatar?: string;

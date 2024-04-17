@@ -40,27 +40,27 @@ const TableList: React.FC = () => {
    * @zh-CN 添加节点
    * @param fields
    */
-    // 把参数的类型改成InterfaceInfo
+  // 把参数的类型改成InterfaceInfo
   const handleAdd = async (fields: API.InterfaceInfo) => {
-      const hide = message.loading('正在添加');
-      try {
-        // 把addRule改成addInterfaceInfoUsingPOST
-        await addInterfaceInfoUsingPost({
-          ...fields,
-        });
-        hide();
-        // 如果调用成功会提示'创建成功'
-        message.success('创建成功');
-        // 创建成功就关闭这个模态框
-        (false);
-        return true;
-      } catch (error: any) {
-        hide();
-        // 否则提示'创建失败' + 报错信息
-        message.error('创建失败，' + error.message);
-        return false;
-      }
-    };
+    const hide = message.loading('正在添加');
+    try {
+      // 把addRule改成addInterfaceInfoUsingPOST
+      await addInterfaceInfoUsingPost({
+        ...fields,
+      });
+      hide();
+      // 如果调用成功会提示'创建成功'
+      message.success('创建成功');
+      // 创建成功就关闭这个模态框
+      (false);
+      return true;
+    } catch (error: any) {
+      hide();
+      // 否则提示'创建失败' + 报错信息
+      message.error('创建失败，' + error.message);
+      return false;
+    }
+  };
   /**
    * @en-US Update node
    * @zh-CN 更新节点
@@ -69,14 +69,14 @@ const TableList: React.FC = () => {
    */
   const handleUpdate = async (fields: API.InterfaceInfo) => {
     // 如果没有选中行，则直接返回
-    if(!currentRow){
+    if (!currentRow) {
       return;
     }
     const hide = message.loading('修改中');
     try {
       // 调用更新接口，传入当前行的id和更新的字段
       await updateInterfaceInfoUsingPost({
-        id:currentRow.id,
+        id: currentRow.id,
         ...fields,
       });
       hide();
@@ -159,30 +159,30 @@ const TableList: React.FC = () => {
    *
    * @param selectedRows
    */
-    // 把参数的类型改成InterfaceInfo
+  // 把参数的类型改成InterfaceInfo
   const handleRemove = async (record: API.InterfaceInfo) => {
-      // 设置加载中的提示为'正在删除'
-      const hide = message.loading('正在删除');
-      if (!record) return true;
-      try {
-        // 把removeRule改成deleteInterfaceInfoUsingPOST
-        await deleteInterfaceInfoUsingPost({
-          // 拿到id就能删除数据
-          id: record.id
-        });
-        hide();
-        // 如果调用成功会提示'删除成功'
-        message.success('删除成功');
-        // 删除成功自动刷新表单
-        actionRef.current?.reload();
-        return true;
-      } catch (error: any) {
-        hide();
-        // 否则提示'删除失败' + 报错信息
-        message.error('删除失败，' + error.message);
-        return false;
-      }
-    };
+    // 设置加载中的提示为'正在删除'
+    const hide = message.loading('正在删除');
+    if (!record) return true;
+    try {
+      // 把removeRule改成deleteInterfaceInfoUsingPOST
+      await deleteInterfaceInfoUsingPost({
+        // 拿到id就能删除数据
+        id: record.id
+      });
+      hide();
+      // 如果调用成功会提示'删除成功'
+      message.success('删除成功');
+      // 删除成功自动刷新表单
+      actionRef.current?.reload();
+      return true;
+    } catch (error: any) {
+      hide();
+      // 否则提示'删除失败' + 报错信息
+      message.error('删除失败，' + error.message);
+      return false;
+    }
+  };
 
 
 
@@ -354,28 +354,28 @@ const TableList: React.FC = () => {
           {/*<FormattedMessage id="pages.searchTable.config" defaultMessage="Configuration" />*/}
         </a>,
         record.status == 0 ?
-        <a
-          key="online"
-          onClick={() => {
-            handleOnline(record)
+          <a
+            key="online"
+            onClick={() => {
+              handleOnline(record)
 
-          }}
-        >
-          发布
-          {/*<FormattedMessage id="pages.searchTable.config" defaultMessage="Configuration" />*/}
-        </a> : null,
-        record.status == 1　?
-        <Button
-          key="offline"
-          danger
-          onClick={() => {
-            // setCurrentRow(record);
-            handleOffline(record)
-          }}
-        >
-          下线
-          {/*<FormattedMessage id="pages.searchTable.config" defaultMessage="Configuration" />*/}
-        </Button> : null,
+            }}
+          >
+            发布
+            {/*<FormattedMessage id="pages.searchTable.config" defaultMessage="Configuration" />*/}
+          </a> : null,
+        record.status == 1 ?
+          <Button
+            key="offline"
+            danger
+            onClick={() => {
+              // setCurrentRow(record);
+              handleOffline(record)
+            }}
+          >
+            下线
+            {/*<FormattedMessage id="pages.searchTable.config" defaultMessage="Configuration" />*/}
+          </Button> : null,
         <Button
           text="text"
           danger
@@ -413,7 +413,7 @@ const TableList: React.FC = () => {
         toolBarRender={() => [
           <Button
             type="primary"
-            key="primary"
+            key="id"
             onClick={() => {
               handleModalOpen(true);
             }}
