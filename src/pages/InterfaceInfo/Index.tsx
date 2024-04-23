@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { getInterfaceInfoByIdUsingGet } from "@/services/azuapi-backend/interfaceInfoController";
 import { invokeInterfaceInfoUsingPost } from '@/services/azuapi-backend/interfaceInfoController';
+import Demo from '../Admin/InterfaceInfo/components/CreateForm';
 
 /**
  * 主页
@@ -109,6 +110,11 @@ const Index: React.FC = () => {
           </Form.Item>
         </Form>
       </Card>
+
+      <Demo>
+
+      </Demo>
+
       <Divider />
       <Card title="返回结果" loading={invokeLoading}>
         {invokeRes}
